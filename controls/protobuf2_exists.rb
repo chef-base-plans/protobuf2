@@ -13,9 +13,9 @@ control 'core-plans-protobuf2-exists' do
 
   plan_installation_directory = command("hab pkg path #{plan_origin}/#{plan_name}")
   describe plan_installation_directory do
-    its('exit_status') { should eq 0 }
     its('stdout') { should_not be_empty }
-    its('stderr') { should be_empty }
+    its('exit_status') { should eq 0 }
+    #its('stderr') { should be_empty }
   end
 
   command_full_path = File.join(plan_installation_directory.stdout.strip, "bin", "protoc")
